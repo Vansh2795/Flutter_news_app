@@ -5,31 +5,28 @@ import 'constants.dart';
 import 'webService.dart';
 
 class NewsListState extends State<NewsList> {
-
   List<NewsArticle> _newsArticles = List<NewsArticle>();
 
   @override
   void initState() {
-
     super.initState();
     _populateNewsArticles();
   }
 
   void _populateNewsArticles() {
-
     Webservice().load(NewsArticle.all).then((newsArticles) => {
-      setState(() => {
-        _newsArticles = newsArticles
-      })
-    });
-
+          setState(() => {_newsArticles = newsArticles})
+        });
   }
 
   ListTile _buildItemsForListView(BuildContext context, int index) {
     return ListTile(
-      title: _newsArticles[index].urlToImage == null ? Image.asset(Constants.NEWS_PLACEHOLDER_IMAGE_ASSET_URL) : Image.network(_newsArticles[index].urlToImage),
-      subtitle: Text(_newsArticles[index].title, style: TextStyle(fontSize: 18)),
-      contentPadding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 10.0),
+      title: _newsArticles[index].urlToImage == null
+          ? Image.asset(Constants.NEWS_PLACEHOLDER_IMAGE_ASSET_URL)
+          : Image.network(_newsArticles[index].urlToImage),
+      subtitle:
+          Text(_newsArticles[index].title, style: TextStyle(fontSize: 18)),
+      contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
     );
   }
 
@@ -41,17 +38,20 @@ class NewsListState extends State<NewsList> {
         ),
         body: new Container(
           margin: const EdgeInsets.only(left: 2.0, right: 2.0),
-          child: new ListView.builder(
-            itemCount: _newsArticles.length,
-            itemBuilder: _buildItemsForListView,
+          child: new Card(
+            child: new ListView.separated(
+              separatorBuilder: (context, index) => Divider(height: 10.0,
+                  ),
+              itemCount: _newsArticles.length,
+              itemBuilder: _buildItemsForListView,
+            ),
           ),
-        )
-    );
+        ));
   }
 }
 
 class NewsList extends StatefulWidget {
-
   @override
   createState() => NewsListState();
 }
+
