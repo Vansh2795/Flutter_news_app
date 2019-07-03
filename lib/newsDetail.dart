@@ -33,11 +33,7 @@ class DetailPage extends StatefulWidget {
         ),
       ),
       body: new Container(
-        child: Container(
-          height: 120.0,
-          child: new Column(
-            children: <Widget>[
-              MaterialApp(
+          child: MaterialApp(
                 routes: {
                   "/": (_) => new WebviewScaffold(
                     url: _url,
@@ -46,10 +42,7 @@ class DetailPage extends StatefulWidget {
                   )
                 },
               ),
-            ],
           ),
-        ),
-      ),
       );
   }
 }
