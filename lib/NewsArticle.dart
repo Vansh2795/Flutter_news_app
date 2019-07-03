@@ -10,9 +10,10 @@ class NewsArticle {
   final String descrption;
   final String urlToImage;
   final String publishedAt;
+  final String content;
 
 
-  NewsArticle({this.url,this.title, this.descrption, this.urlToImage,this.publishedAt,
+  NewsArticle({this.url,this.title, this.descrption, this.urlToImage,this.publishedAt,this.content
   });
 
   factory NewsArticle.fromJson(Map<String,dynamic> json) {
@@ -21,7 +22,8 @@ class NewsArticle {
         descrption: json['description'],
         urlToImage: json['urlToImage'] ?? Constants.NEWS_PLACEHOLDER_IMAGE_ASSET_URL,
         url: json['url'],
-        publishedAt: json['publishedAt']
+        publishedAt: json['publishedAt'],
+        content: json['content']
     );
   }
   static Resource<List<NewsArticle>> get all => Resource(
@@ -32,5 +34,4 @@ class NewsArticle {
         return list.map((model) => NewsArticle.fromJson(model)).toList();
       }
   );
-
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
+import 'newsDetail.dart';
 import 'package:flutter/widgets.dart';
 import 'NewsArticle.dart';
 import 'constants.dart';
@@ -28,6 +28,13 @@ class NewsListState extends State<NewsList> {
       subtitle:
           Text(_newsArticles[index].title, style: TextStyle(fontSize: 18)),
       contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+      onTap: () {
+        var url = _newsArticles[index].url;
+        Navigator.push(context,
+            new MaterialPageRoute(
+              builder: (BuildContext context) => new DetailPage(url),
+        ));
+      },
     );
   }
 
@@ -37,9 +44,12 @@ class NewsListState extends State<NewsList> {
       margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
       child: Container(
           decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
-          child: _buildItemsForListView(context, index)),
+          child: _buildItemsForListView(context, index)
+      ),
     );
   }
+
+
 
   @override
   Widget build(BuildContext context) {

@@ -40,7 +40,8 @@ class NewsListState extends State<NewsList> {
           margin: const EdgeInsets.only(left: 2.0, right: 2.0),
           child: new Card(
             child: new ListView.separated(
-              separatorBuilder: (context, index) => Divider(height: 10.0,
+              separatorBuilder: (context, index) => Divider(
+                    height: 10.0,
                   ),
               itemCount: _newsArticles.length,
               itemBuilder: _buildItemsForListView,
@@ -54,4 +55,3 @@ class NewsList extends StatefulWidget {
   @override
   createState() => NewsListState();
 }
-
