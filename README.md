@@ -1,7 +1,7 @@
 # flutter_app_newsapi
 
 A Basic Flutter Application to explore Flutter and its services.
-Used - 
+## Used - 
 1. News API
-2. Webservice
-
+2. http
+3. flutter WebView
